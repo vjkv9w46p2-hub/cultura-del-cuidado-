@@ -1,0 +1,510 @@
+/* --- Variables de Paleta Institucional y Tipografía --- */
+:root {
+    --primary-color: #1a365d; /* Azul Institucional */
+    --secondary-color: #d69e2e; /* Dorado Suave */
+    --bg-light: #f7fafc; /* Gris Claro */
+    --bg-white: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --alert-color: #c53030; /* Rojo para alertas críticas */
+    --border-color: #e2e8f0;
+    --transition-speed: 0.3s;
+}
+
+/* Variables del Modo Oscuro */
+.dark-theme {
+    --primary-color: #2b6cb0;
+    --secondary-color: #ecc94b;
+    --bg-light: #1a202c;
+    --bg-white: #2d3748;
+    --text-main: #f7fafc;
+    --text-muted: #a0aec0;
+    --border-color: #4a5568;
+}
+
+/* --- Reseteo Estándar y Estilos Globales --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 4rem 1.5rem;
+}
+
+.bg-light {
+    background-color: var(--bg-white); /* Intercambio visual para modularidad */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Accesibilidad --- */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--secondary-color);
+    color: #000;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* --- Encabezado --- */
+.site-header {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.logo h1 span {
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    color: var(--secondary-color);
+    outline: none;
+}
+
+.btn-theme {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: all var(--transition-speed);
+}
+.btn-theme:hover {
+    background-color: #ffffff;
+    color: var(--primary-color);
+}
+
+/* --- Buscador Global --- */
+.search-bar-section {
+    background: var(--bg-white);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+.search-container input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-light);
+    color: var(--text-main);
+}
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #1a365d 0%, #2a4365 100%);
+    color: #ffffff;
+    padding: 6rem 2rem;
+    text-align: center;
+    overflow: hidden;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.subtitle-badge {
+    background: rgba(214, 158, 46, 0.2);
+    color: var(--secondary-color);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+    line-height: 1.2;
+}
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+.stat-card {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    min-width: 200px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+.stat-label {
+    font-size: 0.85rem;
+    color: #e2e8f0;
+}
+
+/* --- Citas e Intro --- */
+.intro-context {
+    padding-top: 3rem;
+    text-align: center;
+    max-width: 800px;
+}
+blockquote {
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    text-align: left;
+}
+.dark-theme blockquote {
+    color: var(--secondary-color);
+}
+
+/* --- Tarjetas Grid (Cards) --- */
+.section-header {
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1rem;
+}
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+.card-tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 0.8rem;
+    background: var(--bg-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.card h3 {
+    margin-bottom: 1rem;
+    padding-right: 4rem;
+    color: var(--primary-color);
+}
+.dark-theme .card h3 {
+    color: #fff;
+}
+.card-excerpt {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+.card-expanded-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.badge-info {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background-color: rgba(26, 54, 93, 0.1);
+    color: var(--primary-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+.btn-card-toggle {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.dark-theme .btn-card-toggle {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+/* --- Acordeón Derecho Canónico --- */
+.canon-search-box {
+    margin-bottom: 1.5rem;
+}
+.canon-search-box input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-light);
+    color: var(--text-main);
+}
+.accordion-item {
+    border: 1px solid var(--border-color);
+    background: var(--bg-white);
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+}
+.accordion-body {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+}
+
+/* --- Sistema de Pestañas (Tabs) --- */
+.tabs-container {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.tabs-list {
+    display: flex;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: background var(--transition-speed);
+}
+.tab-btn.active {
+    background: var(--bg-white);
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+.tab-content {
+    padding: 2.5rem;
+}
+.ise-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+.ise-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Línea de Tiempo --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    border-left: 3px solid var(--primary-color);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+.timeline-dot {
+    position: absolute;
+    left: calc(-2rem - 8px);
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    border: 2px solid var(--bg-white);
+}
+.timeline-content {
+    background: var(--bg-white);
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.timeline-year {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* --- Mapa Conceptual --- */
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.map-node {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background var(--transition-speed);
+}
+.map-node:hover {
+    background: var(--secondary-color);
+    color: black;
+}
+.map-panel {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 8px;
+    min-height: 120px;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background: #1a202c;
+    color: #a0aec0;
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.footer-content p {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Ajustes Móviles --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .hero-content h2 {
+        font-size: 1.75rem;
+    }
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero-section {
+    background-image:
+        linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+        url("imagenes/cultura-cuidado.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    min-height: 90vh;
+
+    display:flex;
+    align-items:center;
+}

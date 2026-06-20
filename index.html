@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Documental: Marcos Normativos y Prevención de Abusos en la Iglesia</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos accesibles mediante SVG internos o fuentes estándar -->
+</head>
+<body class="light-theme">
+
+    <!-- Accesibilidad: Salto al contenido principal -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado / Navegación Superior -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Plataforma Académica <span>Cultura del Cuidado</span></h1>
+            </div>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#magisterio">Magisterio Universal</a></li>
+                    <li><a href="#derecho-canonico">Derecho Canónico</a></li>
+                    <li><a href="#iglesia-chile">Iglesia en Chile</a></li>
+                    <li><a href="#linea-tiempo">Línea de Tiempo</a></li>
+                    <li><a href="#mapa-conceptual">Mapa Conceptual</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" aria-label="Cambiar modo de color" class="btn-theme">
+                    <span class="mode-text">Modo Oscuro</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Búsqueda Global Fija/Superior -->
+    <section class="search-bar-section" aria-label="Buscador global">
+        <div class="search-container">
+            <input type="search" id="global-search" placeholder="Buscar documentos, cánones, normativas (ej: Vos estis, ISE, 1398)..." aria-label="Buscar en todo el sitio">
+            <button id="search-btn" class="btn-primary">Buscar</button>
+        </div>
+    </section>
+
+    <main id="main-content">
+        
+        <!-- Sección Inicio / Hero -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="subtitle-badge">Análisis Ético, Normativo y Pastoral</span>
+                <h2>Los Abusos en la Iglesia Católica: Marcos Normativos, Magisterio Eclesial y el Caso Chileno</h2>
+                <p>Una plataforma de documentación científica, jurídica y académica orientada a la transparencia, la justicia, la reparación y la consolidación de una cultura del cuidado y del buen trato.</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Modelos de Gestión Históricos</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">20</span>
+                        <span class="stat-label">Orientaciones de Integridad (ISE)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Tolerancia Absoluta al Encubrimiento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introducción Temática -->
+        <section class="intro-context container">
+            <h2>Planteamiento Ético-Moral</h2>
+            <blockquote>
+                "Desde la perspectiva de la Moral de la Persona, el abuso sexual no es únicamente una transgresión de la norma, sino un atentado profundo contra la dignidad ontológica de la persona, quien, teológicamente considerada, es templo del Espíritu Santo."
+            </blockquote>
+            <p>Este espacio académico desentraña el tránsito moral e institucional fundamental: la evolución desde paradigmas deficientes (el modelo del pecado y de la enfermedad, que priorizaban el fuero interno y el ocultamiento) hacia el <strong>modelo del delito y de la responsabilidad institucional</strong>, centrado rigurosamente en la víctima.</p>
+        </section>
+
+        <!-- Sección Magisterio Universal -->
+        <section id="magisterio" class="section-padding container">
+            <div class="section-header">
+                <h2>I. Marco Magisterial Universal</h2>
+                <p>Evolución doctrinal de la Santa Sede y decretos pontificios globales.</p>
+            </div>
+
+            <div class="cards-grid" id="magisterio-cards">
+                <!-- Tarjeta 1 -->
+                <div class="card clickable-card" data-search="sacramentorum sanctitatis tutela juan pablo ii benedicto xvi delicta graviora 2001 2010">
+                    <div class="card-tag">2001 / 2010</div>
+                    <h3>Sacramentorum Sanctitatis Tutela</h3>
+                    <p class="card-excerpt">Motu Proprio de Juan Pablo II (actualizado por Benedicto XVI). Establece los abusos como <em>delicta graviora</em>.</p>
+                    <div class="card-expanded-content hidden">
+                        <p><strong>Detalle:</strong> Centralizó la competencia de investigación y juicio criminal en la Congregación para la Doctrina de la Fe, retirando la potestad discrecional de las diócesis locales e iniciando la política de "tolerancia cero".</p>
+                        <span class="badge-info">Modelo del Delito</span>
+                    </div>
+                    <button class="btn-card-toggle">Ver más resumen</button>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="card clickable-card" data-search="como una madre amorosa papa francisco encubrimiento negligencia 2016">
+                    <div class="card-tag">2016</div>
+                    <h3>Como una madre amorosa</h3>
+                    <p class="card-excerpt">Motu Proprio del Papa Francisco. Introduce la rendición de cuentas de la jerarquía eclesiástica.</p>
+                    <div class="card-expanded-content hidden">
+                        <p><strong>Detalle:</strong> Decreta legítima la remoción de obispos o superiores mayores si se demuestra negligencia u omisión en la gestión de casos de abuso.</p>
+                        <span class="badge-info">Responsabilidad Institucional</span>
+                    </div>
+                    <button class="btn-card-toggle">Ver más resumen</button>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="card clickable-card" data-search="vos estis lux mundi secreto pontificio obligacion denuncia 2019">
+                    <div class="card-tag">2019 / 2023</div>
+                    <h3>Vos estis lux mundi</h3>
+                    <p class="card-excerpt">Carta Apostólica del Papa Francisco. Fin del secreto pontificio y obligatoriedad de denuncias.</p>
+                    <div class="card-expanded-content hidden">
+                        <p><strong>Detalle:</strong> Introduce el mandato revolucionario de la obligación de denuncia para clérigos y religiosos, y elimina el secreto pontificio para estos crímenes, impidiendo el silencio forzado de víctimas y testigos.</p>
+                        <span class="badge-info">Fin de la Opacidad</span>
+                    </div>
+                    <button class="btn-card-toggle">Ver más resumen</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Derecho Canónico -->
+        <section id="derecho-canonico" class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>II. Especialización en Derecho Canónico</h2>
+                    <p>Reformas penales internas y estructuración del ordenamiento jurídico eclesial.</p>
+                </div>
+
+                <div class="canon-search-box">
+                    <label for="canon-filter">Filtrar por número o concepto: </label>
+                    <input type="text" id="canon-filter" placeholder="Ej: Libro VI, Pascite Gregem Dei...">
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item" data-canon="pascite gregem dei libro vi 1398">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span>Constitución Apostólica Pascite Gregem Dei (2021) - Reforma Libro VI</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-body hidden">
+                            <p><strong>Texto Oficial / Contexto:</strong> Modificación integral del Derecho Penal de la Iglesia.</p>
+                            <p><strong>Explicación Pastoral:</strong> El abuso ya no es considerado meramente una infracción formal de los deberes del estado clerical, sino que se categoriza de forma explícita como un <strong>delito contra la vida, la dignidad y la libertad de la persona</strong>.</p>
+                            <p><strong>Referencias Cruzadas:</strong> Amplía las protecciones penales eclesiales extendiéndolas explícitamente hacia los adultos vulnerables.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Iglesia en Chile -->
+        <section id="iglesia-chile" class="section-padding container">
+            <div class="section-header">
+                <h2>III. Respuestas y Normativas de la Iglesia Chilena</h2>
+                <p>Evolución de protocolos nacionales y el impacto de la crisis sistémica local.</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-list" role="tablist">
+                    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-cech">Líneas Guía CECh</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-ise">Documento ISE (2020)</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-clericalismo">Análisis del Clericalismo</button>
+                </div>
+                
+                <div class="tab-content active" id="tab-cech" role="tabpanel">
+                    <h3>Cuidado y Esperanza & Respuestas Institucionales</h3>
+                    <p>La Iglesia en Chile debió transicionar de manera abrupta forzada por crisis públicas de confianza y visitas apostólicas especiales (como la Carta del Papa Francisco al Pueblo de Dios que peregrina en Chile en 2018 y las resoluciones de la Asamblea Extraordinaria de Obispos en Punta de Tralca).</p>
+                    <p>Se consolidaron comisiones diocesanas de prevención y la obligatoriedad de la remisión de antecedentes a la justicia civil del Estado chileno.</p>
+                </div>
+                
+                <div class="tab-content hidden" id="tab-ise" role="tabpanel">
+                    <h3>Integridad en el Servicio Eclesial (ISE)</h3>
+                    <p>Promulgado por la Conferencia Episcopal de Chile en 2020. No es un código penal, sino un <strong>marco ético sistémico</strong> orientado a garantizar entornos de buen trato a través de 20 orientaciones prácticas obligatorias divididas en 6 dimensiones:</p>
+                    <ul class="ise-list">
+                        <li><strong>Testimonio:</strong> Coherencia de vida y acogida sin discriminación.</li>
+                        <li><strong>Justicia y Equidad:</strong> Trato justo en relaciones laborales y personales.</li>
+                        <li><strong>Encuentro con Otros:</strong> Relaciones horizontales protectoras de la diversidad.</li>
+                        <li><strong>Prevención de Abusos:</strong> Respeto estricto de límites interpersonales.</li>
+                        <li><strong>Calidad del Servicio:</strong> Formación permanente e idoneidad pastoral.</li>
+                        <li><strong>Autocuidado:</strong> Atención a la salud mental, física y espiritual.</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content hidden" id="tab-clericalismo" role="tabpanel">
+                    <h3>Raíz Estructural: El Fenómeno del Clericalismo</h3>
+                    <p>De acuerdo con informes analíticos de la Pontificia Universidad Católica de Chile (2020), el clericalismo opera como la base estructural de las asimetrías de poder. Identifica equívocamente el ministerio sagrado con una posición de dominación, eximiendo al clérigo de rendir cuentas civiles y destruyendo la horizontalidad evangélica.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Línea de Tiempo Interactiva -->
+        <section id="linea-tiempo" class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>IV. Línea de Tiempo Cronológica</h2>
+                    <p>Hitos legislativos de la Iglesia Universal y Local.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item" data-date="2001">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2001</span>
+                            <h4>Sacramentorum Sanctitatis Tutela</h4>
+                            <p>Juan Pablo II centraliza las causas penales por abusos en la Congregación para la Doctrina de la Fe.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-date="2016">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2016</span>
+                            <h4>Como una madre amorosa</h4>
+                            <p>Sanción explícita a la negligencia episcopal y remoción por encubrimiento de delitos.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-date="2018">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2018</span>
+                            <h4>Hito en Chile: Carta del Papa Francisco</h4>
+                            <p>Intervención directa y crisis estructural del episcopado chileno en Punta de Tralca.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-date="2019">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2019</span>
+                            <h4>Vos estis lux mundi</h4>
+                            <p>Obligación penal de denunciar canales internos de protección y eliminación del Secreto Pontificio.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-date="2020">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2020</span>
+                            <h4>Promulgación del Documento ISE</h4>
+                            <p>La CECh publica el código ético marco para la prevención de abusos de poder en Chile.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-date="2021">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2021</span>
+                            <h4>Pascite Gregem Dei</h4>
+                            <p>Reforma estructural al derecho penal de la Iglesia (Libro VI del Código de Derecho Canónico).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa Conceptual Interactivo -->
+        <section id="mapa-conceptual" class="section-padding container">
+            <div class="section-header">
+                <h2>V. Mapa Conceptual Interactivo</h2>
+                <p>Haga clic en cada núcleo conceptual para desplegar sus dimensiones ético-jurídicas.</p>
+            </div>
+
+            <div class="map-grid">
+                <div class="map-node" data-node="prevencion">Prevención</div>
+                <div class="map-node" data-node="denuncia">Denuncia</div>
+                <div class="map-node" data-node="acompanamiento">Acompañamiento</div>
+                <div class="map-node" data-node="justicia">Justicia y Reparación</div>
+            </div>
+
+            <div id="map-display-panel" class="map-panel">
+                <p id="map-placeholder">Seleccione un nodo superior para desplegar la información analítica vinculada.</p>
+                <div id="map-real-content" class="hidden">
+                    <h3 id="node-title"></h3>
+                    <p id="node-desc"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos Multimedia Integrados -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>VI. Recursos y Documentación Multimedia</h2>
+                    <p>Espacio para materiales audiovisuales pedagógicos integrados.</p>
+                </div>
+                <div class="video-wrapper">
+                    <!-- Configurado de manera que sea fácilmente reemplazable modificando el atributo src -->
+                    <iframe id="main-video" width="100%" height="450" src="https://www.youtube.com/embed/placeholder" title="Video de Contextualización eclesial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página Institucional -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Plataforma de Documentación Jurídica y Moral de la Persona. Desarrollo bajo Estándares de Accesibilidad Universal.</p>
+            <p>Fichas bibliográficas y marcos integrados basados en el Informe de la Comisión UC (2020), Decretos de la Santa Sede y la Conferencia Episcopal de Chile.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
