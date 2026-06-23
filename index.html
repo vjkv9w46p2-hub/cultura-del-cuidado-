@@ -3,304 +3,633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Documental: Marcos Normativos y Prevención de Abusos en la Iglesia</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Iconos accesibles mediante SVG internos o fuentes estándar -->
+    <title>Moral de la Persona: Abusos Sexuales en la Iglesia, Magisterio, Responsabilidad Eclesial y Cultura del Cuidado</title>
+    <!-- Tailwind CSS para el diseño elegante, moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vatican: {
+                            50: '#f0f4f8',
+                            100: '#dbeafe',
+                            800: '#1e3a8a',
+                            900: '#1e3a5f',
+                        },
+                        liturgical: {
+                            500: '#d97706',
+                            600: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'SF Pro Display', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados tipo Notion y animaciones suaves */
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .smooth-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .progress-checkbox:checked + label { text-decoration: line-through; color: #94a3b8; }
+    </style>
 </head>
-<body class="light-theme">
+<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-vatican-100">
 
-    <!-- Accesibilidad: Salto al contenido principal -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-    <!-- Encabezado / Navegación Superior -->
-    <header class="site-header">
-        <div class="header-container">
-            <div class="logo">
-                <h1>Plataforma Académica <span>Cultura del Cuidado</span></h1>
-            </div>
-            <nav class="main-nav" aria-label="Navegación principal">
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#magisterio">Magisterio Universal</a></li>
-                    <li><a href="#derecho-canonico">Derecho Canónico</a></li>
-                    <li><a href="#iglesia-chile">Iglesia en Chile</a></li>
-                    <li><a href="#linea-tiempo">Línea de Tiempo</a></li>
-                    <li><a href="#mapa-conceptual">Mapa Conceptual</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <button id="theme-toggle" aria-label="Cambiar modo de color" class="btn-theme">
-                    <span class="mode-text">Modo Oscuro</span>
-                </button>
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR / INDICADOR DE PROGRESO GLOBAL -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-vatican-800 text-white p-2 rounded-lg font-serif font-bold text-lg shadow-sm">UC</div>
+            <div>
+                <h1 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Facultad de Teología</h1>
+                <p class="text-sm font-bold text-vatican-900">Pontificia Universidad Católica de Chile</p>
             </div>
         </div>
+        
+        <!-- Barra de Progreso Interactiva -->
+        <div class="w-full md:w-72 bg-slate-100 rounded-full h-2.5 relative overflow-hidden border border-slate-200">
+            <div id="global-progress-bar" class="bg-liturgical-500 h-full w-0 smooth-transition"></div>
+            <span id="progress-text" class="absolute right-2 -top-1 text-[10px] font-bold text-vatican-800 bg-white px-1 rounded shadow-sm">Progreso: 0%</span>
+        </div>
+
+        <button onclick="toggleModal('modal-biblioteca')" class="bg-vatican-50 hover:bg-vatican-100 text-vatican-800 text-xs font-bold px-4 py-2 rounded-lg border border-vatican-100 smooth-transition flex items-center gap-2">
+            📚 Biblioteca Digital
+        </button>
     </header>
 
-    <!-- Barra de Búsqueda Global Fija/Superior -->
-    <section class="search-bar-section" aria-label="Buscador global">
-        <div class="search-container">
-            <input type="search" id="global-search" placeholder="Buscar documentos, cánones, normativas (ej: Vos estis, ISE, 1398)..." aria-label="Buscar en todo el sitio">
-            <button id="search-btn" class="btn-primary">Buscar</button>
-        </div>
-    </section>
-
-    <main id="main-content">
+    <!-- CONTENEDOR PRINCIPAL: APARTADO EN DOS COLUMNAS (Estilo Notion/Moodle) -->
+    <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
         
-        <!-- Sección Inicio / Hero -->
-        <section id="inicio" class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <span class="subtitle-badge">Análisis Ético, Normativo y Pastoral</span>
-                <h2>Los Abusos en la Iglesia Católica: Marcos Normativos, Magisterio Eclesial y el Caso Chileno</h2>
-                <p>Una plataforma de documentación científica, jurídica y académica orientada a la transparencia, la justicia, la reparación y la consolidación de una cultura del cuidado y del buen trato.</p>
-                <div class="hero-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Modelos de Gestión Históricos</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">20</span>
-                        <span class="stat-label">Orientaciones de Integridad (ISE)</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Tolerancia Absoluta al Encubrimiento</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Introducción Temática -->
-        <section class="intro-context container">
-            <h2>Planteamiento Ético-Moral</h2>
-            <blockquote>
-                "Desde la perspectiva de la Moral de la Persona, el abuso sexual no es únicamente una transgresión de la norma, sino un atentado profundo contra la dignidad ontológica de la persona, quien, teológicamente considerada, es templo del Espíritu Santo."
-            </blockquote>
-            <p>Este espacio académico desentraña el tránsito moral e institucional fundamental: la evolución desde paradigmas deficientes (el modelo del pecado y de la enfermedad, que priorizaban el fuero interno y el ocultamiento) hacia el <strong>modelo del delito y de la responsabilidad institucional</strong>, centrado rigurosamente en la víctima.</p>
-        </section>
-
-        <!-- Sección Magisterio Universal -->
-        <section id="magisterio" class="section-padding container">
-            <div class="section-header">
-                <h2>I. Marco Magisterial Universal</h2>
-                <p>Evolución doctrinal de la Santa Sede y decretos pontificios globales.</p>
-            </div>
-
-            <div class="cards-grid" id="magisterio-cards">
-                <!-- Tarjeta 1 -->
-                <div class="card clickable-card" data-search="sacramentorum sanctitatis tutela juan pablo ii benedicto xvi delicta graviora 2001 2010">
-                    <div class="card-tag">2001 / 2010</div>
-                    <h3>Sacramentorum Sanctitatis Tutela</h3>
-                    <p class="card-excerpt">Motu Proprio de Juan Pablo II (actualizado por Benedicto XVI). Establece los abusos como <em>delicta graviora</em>.</p>
-                    <div class="card-expanded-content hidden">
-                        <p><strong>Detalle:</strong> Centralizó la competencia de investigación y juicio criminal en la Congregación para la Doctrina de la Fe, retirando la potestad discrecional de las diócesis locales e iniciando la política de "tolerancia cero".</p>
-                        <span class="badge-info">Modelo del Delito</span>
-                    </div>
-                    <button class="btn-card-toggle">Ver más resumen</button>
+        <!-- SIDEBAR DE NAVEGACIÓN PEDAGÓGICA Y CHECKLIST -->
+        <aside class="w-full lg:w-80 bg-white border-r border-slate-200 p-6 flex flex-col justify-between sidebar-scroll lg:sticky lg:top-[73px] lg:h-[calc(100vh-73px)] overflow-y-auto">
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-xs font-bold uppercase text-slate-400 tracking-widest mb-3">Ruta de Aprendizaje</h2>
+                    <nav class="space-y-1">
+                        <a href="#etapa1" onclick="setActiveStep(1)" class="step-link flex items-center gap-3 p-3 text-sm font-medium rounded-xl text-vatican-800 bg-vatican-50 smooth-transition border-l-4 border-vatican-800">
+                            <span class="w-6 h-6 flex items-center justify-center bg-vatican-800 text-white rounded-md text-xs font-bold">1</span>
+                            Contexto e Historiografía
+                        </a>
+                        <a href="#etapa2" onclick="setActiveStep(2)" class="step-link flex items-center gap-3 p-3 text-sm font-medium rounded-xl text-slate-600 hover:bg-slate-50 smooth-transition border-l-4 border-transparent">
+                            <span class="w-6 h-6 flex items-center justify-center bg-slate-200 text-slate-700 rounded-md text-xs font-bold">2</span>
+                            Magisterio Universal
+                        </a>
+                        <a href="#etapa3" onclick="setActiveStep(3)" class="step-link flex items-center gap-3 p-3 text-sm font-medium rounded-xl text-slate-600 hover:bg-slate-50 smooth-transition border-l-4 border-transparent">
+                            <span class="w-6 h-6 flex items-center justify-center bg-slate-200 text-slate-700 rounded-md text-xs font-bold">3</span>
+                            Caso Chile & Sinodalidad
+                        </a>
+                        <a href="#etapa4" onclick="setActiveStep(4)" class="step-link flex items-center gap-3 p-3 text-sm font-medium rounded-xl text-slate-600 hover:bg-slate-50 smooth-transition border-l-4 border-transparent">
+                            <span class="w-6 h-6 flex items-center justify-center bg-slate-200 text-slate-700 rounded-md text-xs font-bold">4</span>
+                            Dinámicas y Prevención
+                        </a>
+                        <a href="#etapa5" onclick="setActiveStep(5)" class="step-link flex items-center gap-3 p-3 text-sm font-medium rounded-xl text-slate-600 hover:bg-slate-50 smooth-transition border-l-4 border-transparent">
+                            <span class="w-6 h-6 flex items-center justify-center bg-slate-200 text-slate-700 rounded-md text-xs font-bold">5</span>
+                            Cultura del Cuidado
+                        </a>
+                    </nav>
                 </div>
 
-                <!-- Tarjeta 2 -->
-                <div class="card clickable-card" data-search="como una madre amorosa papa francisco encubrimiento negligencia 2016">
-                    <div class="card-tag">2016</div>
-                    <h3>Como una madre amorosa</h3>
-                    <p class="card-excerpt">Motu Proprio del Papa Francisco. Introduce la rendición de cuentas de la jerarquía eclesiástica.</p>
-                    <div class="card-expanded-content hidden">
-                        <p><strong>Detalle:</strong> Decreta legítima la remoción de obispos o superiores mayores si se demuestra negligencia u omisión en la gestión de casos de abuso.</p>
-                        <span class="badge-info">Responsabilidad Institucional</span>
-                    </div>
-                    <button class="btn-card-toggle">Ver más resumen</button>
-                </div>
+                <hr class="border-slate-100">
 
-                <!-- Tarjeta 3 -->
-                <div class="card clickable-card" data-search="vos estis lux mundi secreto pontificio obligacion denuncia 2019">
-                    <div class="card-tag">2019 / 2023</div>
-                    <h3>Vos estis lux mundi</h3>
-                    <p class="card-excerpt">Carta Apostólica del Papa Francisco. Fin del secreto pontificio y obligatoriedad de denuncias.</p>
-                    <div class="card-expanded-content hidden">
-                        <p><strong>Detalle:</strong> Introduce el mandato revolucionario de la obligación de denuncia para clérigos y religiosos, y elimina el secreto pontificio para estos crímenes, impidiendo el silencio forzado de víctimas y testigos.</p>
-                        <span class="badge-info">Fin de la Opacidad</span>
-                    </div>
-                    <button class="btn-card-toggle">Ver más resumen</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Derecho Canónico -->
-        <section id="derecho-canonico" class="section-padding bg-light">
-            <div class="container">
-                <div class="section-header">
-                    <h2>II. Especialización en Derecho Canónico</h2>
-                    <p>Reformas penales internas y estructuración del ordenamiento jurídico eclesial.</p>
-                </div>
-
-                <div class="canon-search-box">
-                    <label for="canon-filter">Filtrar por número o concepto: </label>
-                    <input type="text" id="canon-filter" placeholder="Ej: Libro VI, Pascite Gregem Dei...">
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-item" data-canon="pascite gregem dei libro vi 1398">
-                        <button class="accordion-header" aria-expanded="false">
-                            <span>Constitución Apostólica Pascite Gregem Dei (2021) - Reforma Libro VI</span>
-                            <span class="icon">+</span>
-                        </button>
-                        <div class="accordion-body hidden">
-                            <p><strong>Texto Oficial / Contexto:</strong> Modificación integral del Derecho Penal de la Iglesia.</p>
-                            <p><strong>Explicación Pastoral:</strong> El abuso ya no es considerado meramente una infracción formal de los deberes del estado clerical, sino que se categoriza de forma explícita como un <strong>delito contra la vida, la dignidad y la libertad de la persona</strong>.</p>
-                            <p><strong>Referencias Cruzadas:</strong> Amplía las protecciones penales eclesiales extendiéndolas explícitamente hacia los adultos vulnerables.</p>
+                <!-- Checklist de Objetivos Académicos -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 tracking-widest mb-3">Hitos Completados</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="chk-1" class="progress-checkbox mt-1 rounded border-slate-300 text-vatican-800 focus:ring-vatican-800" onchange="calculateProgress()">
+                            <label for="chk-1" class="text-xs font-medium text-slate-600 cursor-pointer select-none">Analizada la crisis diocesana previa al 2001</label>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="chk-2" class="progress-checkbox mt-1 rounded border-slate-300 text-vatican-800 focus:ring-vatican-800" onchange="calculateProgress()">
+                            <label for="chk-2" class="text-xs font-medium text-slate-600 cursor-pointer select-none">Trazada la evolución del Magisterio</label>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="chk-3" class="progress-checkbox mt-1 rounded border-slate-300 text-vatican-800 focus:ring-vatican-800" onchange="calculateProgress()">
+                            <label for="chk-3" class="text-xs font-medium text-slate-600 cursor-pointer select-none">Comprendido el Caso de la Iglesia Chilena</label>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="chk-4" class="progress-checkbox mt-1 rounded border-slate-300 text-vatican-800 focus:ring-vatican-800" onchange="calculateProgress()">
+                            <label for="chk-4" class="text-xs font-medium text-slate-600 cursor-pointer select-none">Evaluadas las asimetrías y el Doble Ciego</label>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="chk-5" class="progress-checkbox mt-1 rounded border-slate-300 text-vatican-800 focus:ring-vatican-800" onchange="calculateProgress()">
+                            <label for="chk-5" class="text-xs font-medium text-slate-600 cursor-pointer select-none">Resuelto el Quiz Crítico Evaluativo</label>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Sección Iglesia en Chile -->
-        <section id="iglesia-chile" class="section-padding container">
-            <div class="section-header">
-                <h2>III. Respuestas y Normativas de la Iglesia Chilena</h2>
-                <p>Evolución de protocolos nacionales y el impacto de la crisis sistémica local.</p>
+            <!-- Autores - Identidad Académica -->
+            <div class="mt-8 pt-4 border-t border-slate-100">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">INTEGRANTES:</h4>
+                <ul class="text-xs font-medium text-slate-500 space-y-1">
+                    <li>• Edin Villamar</li>
+                    <li>• Jhonny Pérez</li>
+                    <li>• Kristopher Rojas</li>
+                    <li>• Oswaldo Mora</li>
+                </ul>
             </div>
+        </aside>
 
-            <div class="tabs-container">
-                <div class="tabs-list" role="tablist">
-                    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-cech">Líneas Guía CECh</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-ise">Documento ISE (2020)</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-clericalismo">Análisis del Clericalismo</button>
+        <!-- ÁREA DE CONTENIDO PRINCIPAL (Itinerario Formativo Exclusivo) -->
+        <main class="flex-1 px-4 md:px-12 py-8 max-w-4xl mx-auto space-y-24">
+            
+            <!-- PORTADA DEL CURSO -->
+            <section class="text-center py-12 border-b border-slate-200">
+                <span class="bg-liturgical-500/10 text-liturgical-600 font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-widest">presentación</span>
+                <h1 class="font-serif text-3xl md:text-5xl font-bold text-vatican-900 mt-4 leading-tight">
+                    Moral Sexual<br>Abusos en la Iglesia, Magisterio, Responsabilidad Eclesial y Cultura del Cuidado
+                </h1>
+                <p class="text-slate-500 text-base md:text-lg mt-4 font-medium max-w-2xl mx-auto">
+                    Plataforma educativa interactiva para estudiantes de la Facultad de Teología de la Pontificia Universidad Católica de Chile.
+                </p>
+            </section>
+
+            <!-- ETAPA 1 -->
+            <section id="etapa1" class="scroll-mt-24 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-vatican-800 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">1</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-vatican-900">Contexto Histórico y Crisis de Abusos</h2>
                 </div>
                 
-                <div class="tab-content active" id="tab-cech" role="tabpanel">
-                    <h3>Cuidado y Esperanza & Respuestas Institucionales</h3>
-                    <p>La Iglesia en Chile debió transicionar de manera abrupta forzada por crisis públicas de confianza y visitas apostólicas especiales (como la Carta del Papa Francisco al Pueblo de Dios que peregrina en Chile en 2018 y las resoluciones de la Asamblea Extraordinaria de Obispos en Punta de Tralca).</p>
-                    <p>Se consolidaron comisiones diocesanas de prevención y la obligatoriedad de la remisión de antecedentes a la justicia civil del Estado chileno.</p>
-                </div>
-                
-                <div class="tab-content hidden" id="tab-ise" role="tabpanel">
-                    <h3>Integridad en el Servicio Eclesial (ISE)</h3>
-                    <p>Promulgado por la Conferencia Episcopal de Chile en 2020. No es un código penal, sino un <strong>marco ético sistémico</strong> orientado a garantizar entornos de buen trato a través de 20 orientaciones prácticas obligatorias divididas en 6 dimensiones:</p>
-                    <ul class="ise-list">
-                        <li><strong>Testimonio:</strong> Coherencia de vida y acogida sin discriminación.</li>
-                        <li><strong>Justicia y Equidad:</strong> Trato justo en relaciones laborales y personales.</li>
-                        <li><strong>Encuentro con Otros:</strong> Relaciones horizontales protectoras de la diversidad.</li>
-                        <li><strong>Prevención de Abusos:</strong> Respeto estricto de límites interpersonales.</li>
-                        <li><strong>Calidad del Servicio:</strong> Formación permanente e idoneidad pastoral.</li>
-                        <li><strong>Autocuidado:</strong> Atención a la salud mental, física y espiritual.</li>
-                    </ul>
+                <blockquote class="border-l-4 border-liturgical-500 bg-amber-50/50 p-4 text-slate-700 italic rounded-r-xl text-sm leading-relaxed">
+                    <strong>Foco Pedagógico:</strong> Comprender la necesidad de la reforma canónica y moral universal a partir del colapso sistémico del modelo de gestión local y diocesano de las décadas previas.
+                </blockquote>
+
+                <div class="prose max-w-none text-slate-600 space-y-4 text-sm md:text-base leading-relaxed">
+                    <p>
+                        <strong>La Situación Previa al Año 2001:</strong> El tratamiento institucional de las denuncias por abusos sexuales contra menores dependía de manera casi exclusiva de los Ordinarios locales (Obispos diocesanos) y de la aplicación del Código de Derecho Canónico de 1983. Este sistema inicial carecía de herramientas centralizadas eficaces para abordar la tipicidad penal eclesial específica y la dimensión sistémica del problema.
+                    </p>
+                    <p>
+                        <strong>Limitaciones del Sistema Diocesano:</strong> La dispersión de criterios normativos y la evidente falta de especialización investigativa criminal dentro de las diócesis generaron respuestas fragmentadas y asimétricas. De manera recurrente, se priorizó la vía medicinal o de acompañamiento pastoral tradicional (mediante traslados de clérigos o terapias de reubicación psicológica) por sobre la vía judicial penal rigurosa, deviniendo en la ineficacia de las sanciones y la desprotección activa de las comunidades.
+                    </p>
+                    <p>
+                        <strong>Aparición Pública de Casos (Años 80 y 90):</strong> La emergencia de graves crisis mediáticas e institucionales en diversas latitudes del mundo (como Estados Unidos, Irlanda y Australia) visibilizó a nivel global que los casos reportados no constituían incidentes aislados o de índole estrictamente privada, sino que respondían directamente a fallas estructurales de supervisión, opacidad y rendición de cuentas institucional.
+                    </p>
+                    <p>
+                        <strong>Crisis de Confianza Institucional:</strong> La profunda asimetría manifestada entre el discurso ético-moral de la Iglesia y la gestión pragmática interna de los delitos sexuales provocó una quiebra drástica de la confianza tanto de los fieles laicos como de la opinión pública internacional hacia la autoridad eclesiástica.
+                    </p>
+                    <p>
+                        <strong>Necesidad de Reformas Universales:</strong> Se tornó imperativo sustraer la competencia exclusiva de los tribunales diocesanos aislados para centralizarla en un organismo superior de la Sede Apostólica, unificando la legislación global y garantizando procesos plenamente justos, vinculantes, transparentes y rigurosos.
+                    </p>
                 </div>
 
-                <div class="tab-content hidden" id="tab-clericalismo" role="tabpanel">
-                    <h3>Raíz Estructural: El Fenómeno del Clericalismo</h3>
-                    <p>De acuerdo con informes analíticos de la Pontificia Universidad Católica de Chile (2020), el clericalismo opera como la base estructural de las asimetrías de poder. Identifica equívocamente el ministerio sagrado con una posición de dominación, eximiendo al clérigo de rendir cuentas civiles y destruyendo la horizontalidad evangélica.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Línea de Tiempo Interactiva -->
-        <section id="linea-tiempo" class="section-padding bg-light">
-            <div class="container">
-                <div class="section-header">
-                    <h2>IV. Línea de Tiempo Cronológica</h2>
-                    <p>Hitos legislativos de la Iglesia Universal y Local.</p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item" data-date="2001">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2001</span>
-                            <h4>Sacramentorum Sanctitatis Tutela</h4>
-                            <p>Juan Pablo II centraliza las causas penales por abusos en la Congregación para la Doctrina de la Fe.</p>
+                <!-- DIAGRAMA INTERACTIVO / COMPARATIVO -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                    <h3 class="text-xs font-bold uppercase text-slate-400 tracking-wider">Estructura Comparativa del Cambio del Modelo</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-red-50/50 border border-red-100 p-4 rounded-xl">
+                            <h4 class="font-bold text-red-800 text-sm flex items-center gap-2">⚠️ Régimen Descentralizado Pre-2001</h4>
+                            <p class="text-xs text-red-700 mt-2 leading-relaxed">Respuestas atomizadas, traslados de clérigos como medida correctiva eclesial, opacidad procesal local y priorización del resguardo reputacional de la institución.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item" data-date="2016">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2016</span>
-                            <h4>Como una madre amorosa</h4>
-                            <p>Sanción explícita a la negligencia episcopal y remoción por encubrimiento de delitos.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-date="2018">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2018</span>
-                            <h4>Hito en Chile: Carta del Papa Francisco</h4>
-                            <p>Intervención directa y crisis estructural del episcopado chileno en Punta de Tralca.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-date="2019">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2019</span>
-                            <h4>Vos estis lux mundi</h4>
-                            <p>Obligación penal de denunciar canales internos de protección y eliminación del Secreto Pontificio.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-date="2020">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2020</span>
-                            <h4>Promulgación del Documento ISE</h4>
-                            <p>La CECh publica el código ético marco para la prevención de abusos de poder en Chile.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-date="2021">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-year">2021</span>
-                            <h4>Pascite Gregem Dei</h4>
-                            <p>Reforma estructural al derecho penal de la Iglesia (Libro VI del Código de Derecho Canónico).</p>
+                        <div class="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl">
+                            <h4 class="font-bold text-emerald-800 text-sm flex items-center gap-2">✨ Modelo Centralizado y Universal</h4>
+                            <p class="text-xs text-emerald-700 mt-2 leading-relaxed">Centralización de competencias penales en Roma, obligación de reporte judicial, protocolos universales estandarizados y primacía de los derechos de las víctimas.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Mapa Conceptual Interactivo -->
-        <section id="mapa-conceptual" class="section-padding container">
-            <div class="section-header">
-                <h2>V. Mapa Conceptual Interactivo</h2>
-                <p>Haga clic en cada núcleo conceptual para desplegar sus dimensiones ético-jurídicas.</p>
-            </div>
+                <!-- CUADRO ACADÉMICO -->
+                <div class="bg-vatican-900 text-white p-6 rounded-2xl space-y-4 shadow-md">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold bg-liturgical-500 px-3 py-1 rounded-full uppercase tracking-wider">Recuadro Epistémico</span>
+                        <span class="text-xs opacity-60">Teología Moral de la Persona</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs md:text-sm">
+                        <div class="space-y-2">
+                            <p><strong>Conceptos Clave:</strong> <i>Forum competens</i> (Fuero competente), Jurisdicción universal, Opacidad institucional, Crisis de credibilidad.</p>
+                            <p><strong>Ideas Fundamentales:</strong> El paso de una gestión atomizada a una respuesta centralizada universal no fue una mera modificación administrativa, sino una exigencia moral estricta de justicia.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p><strong>Pregunta de Reflexión:</strong> ¿De qué manera la falta de una normativa universal penal explícita en los años 80 y 90 afectó directamente la comprensión intrínseca de la dignidad de las víctimas?</p>
+                            <p class="text-liturgical-500 font-semibold"><strong>Aplicación Pastoral:</strong> La transparencia y la uniformidad procesal no entran en contradicción con la caridad pastoral, sino que constituyen su primer y fundamental requisito de justicia (<i>Iustitia in caritate</i>).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="map-grid">
-                <div class="map-node" data-node="prevencion">Prevención</div>
-                <div class="map-node" data-node="denuncia">Denuncia</div>
-                <div class="map-node" data-node="acompanamiento">Acompañamiento</div>
-                <div class="map-node" data-node="justicia">Justicia y Reparación</div>
-            </div>
+            <hr class="border-slate-200">
 
-            <div id="map-display-panel" class="map-panel">
-                <p id="map-placeholder">Seleccione un nodo superior para desplegar la información analítica vinculada.</p>
-                <div id="map-real-content" class="hidden">
-                    <h3 id="node-title"></h3>
-                    <p id="node-desc"></p>
+            <!-- ETAPA 2 -->
+            <section id="etapa2" class="scroll-mt-24 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-vatican-800 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">2</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-vatican-900">Respuesta del Magisterio Universal</h2>
+                </div>
+
+                <blockquote class="border-l-4 border-liturgical-500 bg-amber-50/50 p-4 text-slate-700 italic rounded-r-xl text-sm leading-relaxed">
+                    <strong>Foco Pedagógico:</strong> Analizar cronológica e intertextualmente la evolución penal, moral y eclesiológica de las normativas pontificias dictadas en el último cuarto de siglo.
+                </blockquote>
+
+                <!-- LÍNEA DE TIEMPO INTERACTIVA / GALERÍA DE TARJETAS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- CARD 1 -->
+                    <div onclick="openDocumentModal('SST')" class="bg-white border border-slate-200 p-6 rounded-2xl hover:border-vatican-800 hover:shadow-md cursor-pointer smooth-transition space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-vatican-800 bg-vatican-50 px-2.5 py-1 rounded-md">2001 - 2010</span>
+                            <span class="text-xs font-semibold text-slate-400">Juan Pablo II / Benedicto XVI</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-slate-800">Sacramentorum Sanctitatis Tutela</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">Establece la reserva legal obligatoria a la Congregación para la Doctrina de la Fe de los delitos más graves contra la moral y los sacramentos (Delicta Graviora).</p>
+                        <span class="text-xs text-liturgical-500 font-bold block pt-2">Ver Análisis Completo →</span>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div onclick="openDocumentModal('CMA')" class="bg-white border border-slate-200 p-6 rounded-2xl hover:border-vatican-800 hover:shadow-md cursor-pointer smooth-transition space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-vatican-800 bg-vatican-50 px-2.5 py-1 rounded-md">2016</span>
+                            <span class="text-xs font-semibold text-slate-400">Papa Francisco</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-slate-800">Como una Madre Amorosa</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">Tipificación canónica de la negligencia institucional episcopal como causa legítima de remoción del oficio pastoral para Obispos y Superiores Generales.</p>
+                        <span class="text-xs text-liturgical-500 font-bold block pt-2">Ver Análisis Completo →</span>
+                    </div>
+
+                    <!-- CARD 3 -->
+                    <div onclick="openDocumentModal('EVLM')" class="bg-white border border-slate-200 p-6 rounded-2xl hover:border-vatican-800 hover:shadow-md cursor-pointer smooth-transition space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-vatican-800 bg-vatican-50 px-2.5 py-1 rounded-md">2019 - 2023</span>
+                            <span class="text-xs font-semibold text-slate-400">Papa Francisco</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-slate-800">Vos Estis Lux Mundi</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">Consagra la obligación universal de denuncia para el clero, la abolición del secreto pontificio y mandata la creación de oficinas de recepción estables.</p>
+                        <span class="text-xs text-liturgical-500 font-bold block pt-2">Ver Análisis Completo →</span>
+                    </div>
+
+                    <!-- CARD 4 -->
+                    <div onclick="openDocumentModal('PGD')" class="bg-white border border-slate-200 p-6 rounded-2xl hover:border-vatican-800 hover:shadow-md cursor-pointer smooth-transition space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-vatican-800 bg-vatican-50 px-2.5 py-1 rounded-md">2021</span>
+                            <span class="text-xs font-semibold text-slate-400">Papa Francisco</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-slate-800">Pascite Gregem Dei</h3>
+                        <p class="text-xs text-slate-500 line-clamp-3">Reforma integral del Libro VI del Código de Derecho Canónico. Los abusos se trasladan a los delitos contra la vida, dignidad y libertad de la persona.</p>
+                        <span class="text-xs text-liturgical-500 font-bold block pt-2">Ver Análisis Completo →</span>
+                    </div>
+                </div>
+
+                <!-- RECUADRO ACADÉMICO -->
+                <div class="bg-slate-950 text-slate-100 p-6 rounded-2xl space-y-4 shadow-md">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold bg-vatican-800 px-3 py-1 rounded-full uppercase tracking-wider">Hermenéutica Documental</span>
+                        <span class="text-xs text-slate-400">Articulación Normativa</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs md:text-sm">
+                        <div class="space-y-2">
+                            <p><strong>Relaciones entre Documentos:</strong> La evolución conceptual demuestra un claro desplazamiento epistemológico: de salvaguardar abstractamente la santidad sacramental (2001) al amparo explícito de la dignidad intrínseca de la persona humana como víctima (2021).</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p><strong>Pregunta Filosófica:</strong> ¿Cómo impacta la reubicación jurídica del delito operada por <i>Pascite Gregem Dei</i> en el desarrollo conceptual actual de la Teología Moral personalista?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-slate-200">
+
+            <!-- ETAPA 3 -->
+            <section id="etapa3" class="scroll-mt-24 space-y-6 bg-vatican-50/40 p-6 md:p-8 rounded-3xl border border-vatican-100/50">
+                <div class="flex items-center gap-3">
+                    <span class="bg-vatican-800 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">3</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-vatican-900">Caso Chile: de la crisis a la cultura del cuidado</h2>
+                </div>
+
+                <blockquote class="border-l-4 border-vatican-800 bg-white p-4 text-slate-700 italic rounded-r-xl text-sm leading-relaxed shadow-sm">
+                    <strong>Foco Pedagógico:</strong> Analizar el quiebre eclesial institucional chileno como un hito crítico de conversión comunitaria, sinodalidad y transformación radical de las estructuras pastorales territoriales.
+                </blockquote>
+
+                <div class="prose max-w-none text-slate-600 space-y-4 text-sm md:text-base leading-relaxed">
+                    <p>
+                        <strong>El Diagnóstico de la Crisis Sistémica:</strong> Chile constituyó el epicentro de un doloroso proceso de revisión institucional global tras la acumulación histórica de denuncias por abusos y encubrimientos extendidos, requiriendo el envío directo de una Misión Especial de la Santa Sede en el año 2018. Este hecho expuso de forma patente las graves deficiencias de los mecanismos ordinarios locales frente a lógicas cerradas de silenciamiento corporativo.
+                    </p>
+                    <p>
+                        <strong>Carta del Papa Francisco al Pueblo de Dios que peregrina en Chile (Mayo 2018):</strong> Documento teológico-pastoral fundante donde el Santo Padre identifica con precisión las raíces eclesiológicas de la crisis. Señala directamente al <strong>clericalismo</strong> como una caricatura deformada de la vocación eclesial, la cual destruye la naturaleza comunitaria, circular y bautismal del Pueblo de Dios, exigiendo una inmediata conversión espiritual y estructural.
+                    </p>
+                    <p>
+                        <strong>Compromisos de Punta de Tralca (Agosto 2018):</strong> Declaración extraordinaria de la Conferencia Episcopal de Chile (CECh). Los obispos asumieron de manera pública imperativos de carácter urgente: total colaboración con el Ministerio Público y la justicia penal civil, dar publicidad irrestricta a los procesos de investigación canónicos en curso, y relevar a profesionales laicos en la conducción de las Oficinas de Prevención.
+                    </p>
+                    <p>
+                        <strong>Líneas Guía "Cuidado y Esperanza":</strong> Cuerpo normativo nacional unificado de la CECh que operó una profunda reconfiguración institucional. Establecen con carácter obligatorio los criterios modernos de prevención ambiental, recepción rigurosa de denuncias, acompañamiento técnico a las víctimas y formación obligatoria de todos los agentes pastorales.
+                    </p>
+                </div>
+
+                <!-- MATRIZ DE TRANSFORMACIÓN RADICAL -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                    <h3 class="text-xs font-bold uppercase text-vatican-800 tracking-wider">Ejes Fundamentales de la Transformación Chilena</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>• Transparencia Institucional:</strong> Colaboración proactiva y obligatoria con el Ministerio Público de Chile, levantando la reserva eclesiástica histórica ante requerimientos de la justicia del Estado.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>• Corresponsabilidad del Laicado:</strong> Transferencia de autoridad ejecutiva técnica en los consejos de prevención a psicólogos, abogados y trabajadores sociales laicos, disolviendo el blindaje cupular del clero.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>• Reparación y Escucha Activa:</strong> Asunción explícita de que la justicia procesal penal resulta insuficiente si no va acompañada de un proceso integral de acogida, validación y reparación del daño espiritual y moral.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <strong>• Prevención Permanente:</strong> Implementación obligatoria y estandarizada de capacitaciones relacionales preventivas como requisito habilitante para ejercer todo servicio pastoral en el país.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-slate-200">
+
+            <!-- ETAPA 4 -->
+            <section id="etapa4" class="scroll-mt-24 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-vatican-800 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">4</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-vatican-900">Situación Actual y Prevención</h2>
+                </div>
+
+                <blockquote class="border-l-4 border-liturgical-500 bg-amber-50/50 p-4 text-slate-700 italic rounded-r-xl text-sm leading-relaxed">
+                    <strong>Foco Pedagógico:</strong> Diagnosticar críticamente las dinámicas psicosociales, sistémicas y de asimetría relacional que viabilizan los abusos en entornos eclesiásticos.
+                </blockquote>
+
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                    A partir de los principios rectores de <strong>Integridad en el Servicio Eclesial (ISE)</strong> y los hallazgos del <strong>Informe de la Pontificia Universidad Católica (2020)</strong>, se estructuran las siguientes variables analíticas fundamentales:
+                </p>
+
+                <!-- MAPA CONCEPTUAL INTERACTIVO INTERNO -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">Clericalismo Sacerdotal</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Deformación patológica de la autoridad que concibe el ministerio como un estatus superior de privilegio ontológico, propiciando un ecosistema de sumisión ciega y deificación del ministro.</p>
+                    </div>
+
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">Dinámica del Doble Ciego</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Fenómeno de ceguera mutua: la comunidad idealiza al líder volviéndose incapaz de advertir la manipulación, mientras la víctima autoconvence su conciencia de que el acto del superior no puede ser nocivo.</p>
+                    </div>
+
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">Desequilibrio y Asimetría de Poder</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Instrumentalización de la legítima asimetría pastoral (derivada del saber o la investidura espiritual) con el fin de anular el discernimiento interno y la libertad volitiva del acompañado.</p>
+                    </div>
+
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">Fronteras Físicas y Emocionales</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Exigencia ética de delimitar de forma clara y auditable los espacios temporales y espaciales del encuentro pastoral, prohibiendo la suplantación terapéutica y las dependencias afectivas.</p>
+                    </div>
+
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">Victimización Secundaria</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Daño institucional e institucionalizado provocado a la víctima mediante interrogatorios invasivos, demoras injustificadas en los fallos canónicos o la estigmatización por parte de su propia comunidad.</p>
+                    </div>
+
+                    <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-vatican-900 text-base">El Tercero Moral Activo</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Imperativo ético comunitario aplicable a los testigos. Ante indicios de abuso, no existe neutralidad posible: el Tercero Moral rompe la diada perversa agresor-víctima mediante la denuncia oportuna.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-slate-200">
+
+            <!-- ETAPA 5 -->
+            <section id="etapa5" class="scroll-mt-24 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="bg-vatican-800 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">5</span>
+                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-vatican-900">Cultura del Cuidado</h2>
+                </div>
+
+                <blockquote class="border-l-4 border-liturgical-500 bg-amber-50/50 p-4 text-slate-700 italic rounded-r-xl text-sm leading-relaxed">
+                    <strong>Síntesis Epistémica Final:</strong> Matriz de transiciones profundas del paradigma institucional de la Iglesia contemporánea.
+                </blockquote>
+
+                <!-- TABLA COMPARATIVA DE PARADIGMAS -->
+                <div class="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm bg-white">
+                    <table class="w-full text-left border-collapse text-xs md:text-sm">
+                        <thead>
+                            <tr class="bg-vatican-900 text-white font-serif">
+                                <th class="p-4 font-bold border-b border-vatican-800">Del Antiguo Paradigma de la Reacción</th>
+                                <th class="p-4 font-bold border-b border-vatican-800">Al Ecosistema de la Cultura del Cuidado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-600">
+                            <tr class="hover:bg-slate-50/50 smooth-transition">
+                                <td class="p-4 font-medium">• Reacción tardía y punitiva ex post facto</td>
+                                <td class="p-4 font-bold text-vatican-800">• Prevención proactiva y blindaje ambiental seguro</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 smooth-transition">
+                                <td class="p-4 font-medium">• Silencio, secreto institucional y reserva corporativa</td>
+                                <td class="p-4 font-bold text-vatican-800">• Transparencia evangélica y apertura procedimental</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 smooth-transition">
+                                <td class="p-4 font-medium">• Encubrimiento por omisión o traslados pastorales</td>
+                                <td class="p-4 font-bold text-vatican-800">• Rendición de cuentas estricta (Accountability)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 smooth-transition">
+                                <td class="p-4 font-medium">• Resguardo prioritario de la honra de la institución</td>
+                                <td class="p-4 font-bold text-vatican-800">• Primacía absoluta y centralidad de la víctima</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 smooth-transition">
+                                <td class="p-4 font-medium">• Autoridad concebida como poder, asimetría y dominación</td>
+                                <td class="p-4 font-bold text-vatican-800">• Autoridad comprendida como Diakonía y servicio evangélico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-6 bg-vatican-50 rounded-2xl border border-vatican-100 text-slate-700 text-sm md:text-base leading-relaxed">
+                    <strong>Conclusión Teológica:</strong> La Cultura del Cuidado no se agota en una burocracia de cumplimiento técnico de carácter legalista; constituye hoy el paradigma fundacional e irrenunciable sobre el cual se asienta la prevención en la Iglesia universal, traduciendo la justicia distributiva y la caridad evangélica en un deber moral permanente.
+                </div>
+            </section>
+
+            <hr class="border-slate-200">
+
+            <!-- QUIZ GAMIFICADO (Módulo Técnico de Evaluación) -->
+            <section class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🎮</span>
+                        <h2 class="font-serif text-xl font-bold text-vatican-900">Simulador de Casos Ético-Teológicos</h2>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider bg-liturgical-500/10 text-liturgical-600 px-3 py-1 rounded-full">Evaluación de Competencias</span>
+                </div>
+
+                <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl space-y-2">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Caso de Estudio Planteado:</p>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                        Un párroco recibe un informe de un laico indicando sospechas fundadas de que un vicario mantiene conversaciones afectivas inapropiadas y manipulación de conciencia con un estudiante de 17 años en el marco del acompañamiento espiritual. El párroco, por temor a dañar la reputación del vicario, opta de forma privada por amonestarlo verbalmente y gestionar un traslado de comunidad en la diócesis.
+                    </p>
+                </div>
+
+                <!-- PREGUNTA 1 -->
+                <div class="space-y-3">
+                    <p class="text-xs md:text-sm font-bold text-slate-800">1. De conformidad con las normas de <i>Sacramentorum Sanctitatis Tutela</i> y <i>Vos Estis Lux Mundi</i>, ¿cuál es la vía canónica obligatoria e inmediata aplicable?</p>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(1, 'A', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">A) Mantener la reserva, realizar una corrección fraterna privada y agilizar el traslado pastoral interno.</button>
+                        <button onclick="checkAnswer(1, 'B', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">B) Remitir de forma inmediata los antecedentes al Ordinario del lugar (Obispo) para dar inicio a la investigación preliminar, al estar ante un menor bajo la tipicidad penal de Delicta Graviora.</button>
+                        <button onclick="checkAnswer(1, 'C', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">C) Esperar que la presunta víctima alcance la mayoría de edad legal del Estado para que determine libremente el curso penal.</button>
+                    </div>
+                    <div id="feedback-1" class="hidden p-3 rounded-xl text-xs font-medium smooth-transition"></div>
+                </div>
+
+                <!-- PREGUNTA 2 -->
+                <div class="space-y-3 pt-4 border-t border-slate-100">
+                    <p class="text-xs md:text-sm font-bold text-slate-800">2. Conforme al principio del "Tercero Moral" detallado en ISE, ¿qué transgresión ética comete el párroco al decidir el silencio o la reubicación?</p>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(2, 'A', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">A) Ninguna transgresión, dado que la moral evangélica prioriza siempre la protección del hermano clérigo en primera instancia.</button>
+                        <button onclick="checkAnswer(2, 'B', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">B) Incurre en encubrimiento por omisión y negligencia en el deber del cuidado, perpetuando la victimización secundaria al omitir los canales de denuncia institucionales obligatorios.</button>
+                        <button onclick="checkAnswer(2, 'C', this)" class="w-full text-left p-3 text-xs md:text-sm border border-slate-200 rounded-xl hover:bg-slate-50 smooth-transition">C) Se tipifica exclusivamente como una falta de orden administrativo menor debido a la carencia de pruebas escritas formales en el fuero interno.</button>
+                    </div>
+                    <div id="feedback-2" class="hidden p-3 rounded-xl text-xs font-medium smooth-transition"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL 1: BIBLIOTECA DIGITAL -->
+    <div id="modal-biblioteca" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden smooth-transition">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-serif text-xl font-bold text-vatican-900">📚 Compendio de la Biblioteca Digital</h3>
+                <button onclick="toggleModal('modal-biblioteca')" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+            </div>
+            <div class="space-y-4 text-xs md:text-sm text-slate-600">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-800">Integridad en el Servicio Eclesial (ISE, 2020)</h4>
+                    <p class="mt-1 text-slate-500">Documento que dota de directrices éticas y relacionales concretas e irrenunciables para guiar el comportamiento y prevención de abusos por parte de agentes pastorales en Chile.</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-800">Informe UC (2020)</h4>
+                    <p class="mt-1 text-slate-500">Estudio académico y empírico interdisciplinar orientado a auditar de manera rigurosa las causales sistémicas, de asimetría relacional y lógicas de poder dentro de las estructuras eclesiales.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Recursos Multimedia Integrados -->
-        <section class="section-padding bg-light">
-            <div class="container">
-                <div class="section-header">
-                    <h2>VI. Recursos y Documentación Multimedia</h2>
-                    <p>Espacio para materiales audiovisuales pedagógicos integrados.</p>
-                </div>
-                <div class="video-wrapper">
-                    <!-- Configurado de manera que sea fácilmente reemplazable modificando el atributo src -->
-                    <iframe id="main-video" width="100%" height="450" src="https://www.youtube.com/embed/placeholder" title="Video de Contextualización eclesial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Pie de página Institucional -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <p>&copy; 2026 Plataforma de Documentación Jurídica y Moral de la Persona. Desarrollo bajo Estándares de Accesibilidad Universal.</p>
-            <p>Fichas bibliográficas y marcos integrados basados en el Informe de la Comisión UC (2020), Decretos de la Santa Sede y la Conferencia Episcopal de Chile.</p>
         </div>
-    </footer>
+    </div>
 
-    <script src="app.js"></script>
+    <!-- MODAL 2: DETALLES DE DOCUMENTOS MAGISTERIALES -->
+    <div id="modal-documento" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden smooth-transition">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 id="modal-doc-title" class="font-serif text-xl font-bold text-vatican-900">Título Documental</h3>
+                <button onclick="closeDocumentModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+            </div>
+            <div id="modal-doc-content" class="space-y-3 text-xs md:text-sm text-slate-600 leading-relaxed">
+                <!-- Se inyecta dinámicamente vía JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- LÓGICA E INTERACTIVIDAD EN JAVASCRIPT (NATIVO Y OPTIMIZADO) -->
+    <script>
+        // Base de Datos Epistémica de los Documentos del Magisterio Universal
+        const documentData = {
+            'SST': {
+                title: "Sacramentorum Sanctitatis Tutela (2001 - 2010)",
+                content: `
+                    <p><strong>Contexto Histórico:</strong> Promulgada en un escenario de progresiva y severa expansión de crisis relacionales que requerían una unificación jurídica centralizada e inmediata.</p>
+                    <p><strong>Objetivo Central:</strong> Reservar taxativamente a la competencia directa de la Congregación para la Doctrina de la Fe el conocimiento legal de los delitos más graves (<i>Delicta Graviora</i>) contra la moral y la santidad de los sacramentos.</p>
+                    <p><strong>Principales Novedades:</strong> Centralización de procesos, elevación legal de la mayoría de edad de protección (hasta los 18 años de edad en la reforma de 2010) y extensión drástica de los plazos de prescripción de las causas penales.</p>
+                    <p><strong>Relación con la Moral de la Persona:</strong> Define el abuso en el centro de las ofensas más lesivas a la santidad sacramental y eclesial, reafirmando que la instrumentalización corporal constituye un pecado intrínsecamente grave que lesiona de raíz la comunión en Cristo.</p>
+                `
+            },
+            'CMA': {
+                title: "Como una Madre Amorosa (2016)",
+                content: `
+                    <p><strong>Contexto Histórico:</strong> Creciente demanda comunitaria global de rendición de cuentas orientada a las líneas y cuadros de alta jerarquía jerárquica de la Iglesia.</p>
+                    <p><strong>Objetivo Central:</strong> Regular de manera explícita la posibilidad jurídica de remoción del oficio de aquellos pastores que evidencien negligencia grave frente a casos de abuso.</p>
+                    <p><strong>Principales Novedades:</strong> Tipificación canónica formal de la negligencia institucional episcopal como causa legítima y justificada para la pérdida de cargos directivos.</p>
+                    <p><strong>Relación con la Moral de la Persona:</strong> Desplaza la culpa ético-legal desde el agresor directo hacia la corresponsabilidad activa de la autoridad. El deber del cuidado exige del pastor una diligencia activa e irrenunciable.</p>
+                `
+            },
+            'EVLM': {
+                title: "Vos Estis Lux Mundi (2019 - 2023)",
+                content: `
+                    <p><strong>Contexto Histórico:</strong> Consecuencia directa del Encuentro Global de Presidentes de Conferencias Episcopales convocado en Roma en 2019.</p>
+                    <p><strong>Objetivo Central:</strong> Instituir protocolos universales permanentes para la denuncia obligatoria de conductas delictivas y el procesamiento transparente de autoridades eclesiales.</p>
+                    <p><strong>Principales Novedades:</strong> Consagración de la obligación canónica estricta para clérigos de reportar denuncias, abolición total del secreto pontificio para estos crímenes e inclusión de adultos vulnerables bajo la protección penal.</p>
+                    <p><strong>Relación con la Moral de la Persona:</strong> Consagra la transparencia informativa y la cooperación como exigencias ontológicas de justicia distributiva, priorizando la dignidad de la víctima por sobre el resguardo corporativo de la institución.</p>
+                `
+            },
+            'PGD': {
+                title: "Pascite Gregem Dei (2021)",
+                content: `
+                    <p><strong>Contexto Histórico:</strong> Culminación de más de una década de revisiones del Derecho Penal de la Iglesia (Libro VI del Código de Derecho Canónico).</p>
+                    <p><strong>Objetivo Central:</strong> Dotar a los tribunales eclesiásticos de un instrumental delictivo ágil, disuasorio y preciso, erradicando la ambigüedad en la aplicación discrecional de penas por parte de ordinarios.</p>
+                    <p><strong>Principales Novedades:</strong> Traslado de los delitos de abusos sexuales hacia el título de los delitos contra la vida, dignidad y libertad de la persona, tipificando correspondientemente las faltas perpetradas por laicos con oficios públicos eclesiales.</p>
+                    <p><strong>Relación con la Moral de la Persona:</strong> Alineación absoluta con el personalismo ético moderno: el ser humano constituye un fin absoluto en sí mismo y jamás puede ser instrumentalizado como un objeto.</p>
+                `
+            }
+        };
+
+        // Modales de Control General
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+
+        function openDocumentModal(docKey) {
+            const doc = documentData[docKey];
+            if (doc) {
+                document.getElementById('modal-doc-title').innerHTML = doc.title;
+                document.getElementById('modal-doc-content').innerHTML = doc.content;
+                document.getElementById('modal-documento').classList.remove('hidden');
+            </div>
+        }
+
+        function closeDocumentModal() {
+            document.getElementById('modal-documento').classList.add('hidden');
+        }
+
+        // Gestión del Indicador de Progreso del Estudiante
+        function calculateProgress() {
+            const checkboxes = document.querySelectorAll('.progress-checkbox');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            const percentage = Math.round((checkedCount / total) * 100);
+            
+            document.getElementById('global-progress-bar').style.width = `${percentage}%`;
+            document.getElementById('progress-text').innerText = `Progreso: ${percentage}%`;
+        }
+
+        // Navegación Activa del Estudiante (Estilo Coursera)
+        function setActiveStep(stepIndex) {
+            const links = document.querySelectorAll('.step-link');
+            links.forEach((link, idx) => {
+                const stepNum = link.querySelector('span');
+                if (idx === (stepIndex - 1)) {
+                    link.classList.add('bg-vatican-50', 'text-vatican-800', 'border-vatican-800');
+                    link.classList.remove('text-slate-600', 'hover:bg-slate-50', 'border-transparent');
+                    stepNum.classList.add('bg-vatican-800', 'text-white');
+                    stepNum.classList.remove('bg-slate-200', 'text-slate-700');
+                } else {
+                    link.classList.remove('bg-vatican-50', 'text-vatican-800', 'border-vatican-800');
+                    link.classList.add('text-slate-600', 'hover:bg-slate-50', 'border-transparent');
+                    stepNum.classList.remove('bg-vatican-800', 'text-white');
+                    stepNum.classList.add('bg-slate-200', 'text-slate-700');
+                }
+            });
+        }
+
+        // Sistema de Retroalimentación Inmediata del Quiz (Gamificado)
+        function checkAnswer(questionNum, option, element) {
+            const feedbackBox = document.getElementById(`feedback-${questionNum}`);
+            const buttons = element.parentElement.querySelectorAll('button');
+            
+            // Bloquear los botones tras responder para fijar la evaluación
+            buttons.forEach(btn => btn.disabled = true);
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200', 'bg-red-50', 'text-red-800', 'border-red-200');
+            feedbackBox.classList.add('border', 'p-3', 'mt-2');
+
+            if (option === 'B') {
+                element.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'font-semibold');
+                feedbackBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+                feedbackBox.innerHTML = `<strong>✨ ¡Respuesta Correcta!</strong> Excelente discernimiento analítico. Ha aplicado correctamente la correlación magisterial procesal y la ética de las fronteras vinculares de la Cultura del Cuidado.`;
+            } else {
+                element.classList.add('bg-red-100', 'border-red-500', 'text-red-900', 'font-semibold');
+                feedbackBox.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+                feedbackBox.innerHTML = `<strong>⚠️ Alerta de Desviación Pedagógica:</strong> La opción seleccionada replica las lógicas de encubrimiento, clericalismo o traslados opacos previos al año 2001 que el Magisterio de la Iglesia ha mandado erradicar taxativamente por ser incompatibles con la dignidad de la persona.`;
+            }
+        }
+    </script>
 </body>
 </html>
